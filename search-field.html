@@ -6,6 +6,7 @@
     <style>
         :host {
             display: block;
+
         }
         paper-input {
             margin-bottom: 100px;
@@ -22,7 +23,8 @@
             is: "search-field",
             properties: {
               query: {
-                  type: String
+                  type: String,
+                  notify: true
               }
             }
         });

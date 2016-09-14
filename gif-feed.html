@@ -22,12 +22,14 @@
                   value: 'http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q='
               }
             },
+            observers: [
+                "observeQuery(query)"
+            ],
             ready: function () {
                 this.grabGifs()
             },
             observeQuery: function () {
-                // Not efficient. Doing a query for every keystroke.
-                this.grabGifs()
+                this.debounce('grabGifs', this.grabGifs, 300)
             },
             grabGifs: function() {
                 console.log("grabbing gifs!")
@@ -36,8 +38,8 @@
 
                 self.set("gifns", [])
                 
-                // What's missing here?
-                xhr.open('GET', this.baseUrl);  // Send an ajax request to get the gif data
+                // Send an ajax request to get the gif data
+                xhr.open('GET', this.baseUrl + this.query);
                 xhr.send();
                 xhr.onreadystatechange = function() {
                     if(xhr.readyState == 4 && xhr.status == 200){

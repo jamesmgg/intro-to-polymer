@@ -1,6 +1,6 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="gif-feed.html">
-<!-- import search field component -->
+<link rel="import" href="search-field.html">
 
 <dom-module id="main-app">
     <style>
@@ -8,7 +8,7 @@
     </style>
 
     <template>
-        <!-- Add search field component -->
+        <search-field query="{{query}}"></search-field>
         <gif-feed query="{{query}}"></gif-feed>
 
     </template>
@@ -19,7 +19,8 @@
             properties: {
               query: {
                   type: String,
-                  value: "funny"
+                  value: "funny",
+                  notify: true
               }
             }
         });
