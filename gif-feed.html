@@ -1,0 +1,53 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<dom-module id="gif-feed">
+    <style>
+        img {
+            display:inline-block;
+        }
+    </style>
+
+    <template>
+        <template is="dom-repeat" items="{{gifns}}">
+            <img src="{{item.images.downsized_large.url}}" />
+        </template>
+    </template>
+
+    <script>
+        Polymer({
+            is: "gif-feed",
+            properties: {
+              baseUrl: {
+                  type: String,
+                  value: 'http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q='
+              }
+            },
+            ready: function () {
+                this.grabGifs()
+            },
+            observeQuery: function () {
+                // Not efficient. Doing a query for every keystroke.
+                this.grabGifs()
+            },
+            grabGifs: function() {
+                console.log("grabbing gifs!")
+                var self = this;
+                var xhr = new XMLHttpRequest();
+
+                self.set("gifns", [])
+                
+                // What's missing here?
+                xhr.open('GET', this.baseUrl);  // Send an ajax request to get the gif data
+                xhr.send();
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        var gifns = [];
+                        var response = JSON.parse(xhr.responseText);
+
+                        self.set("gifns", response.data)
+                    }
+                }
+            }
+        });
+    </script>
+</dom-module>

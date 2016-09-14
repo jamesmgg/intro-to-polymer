@@ -1,0 +1,27 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="gif-feed.html">
+<!-- import search field component -->
+
+<dom-module id="main-app">
+    <style>
+        
+    </style>
+
+    <template>
+        <!-- Add search field component -->
+        <gif-feed query="{{query}}"></gif-feed>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: "main-app",
+            properties: {
+              query: {
+                  type: String,
+                  value: "funny"
+              }
+            }
+        });
+    </script>
+</dom-module>
