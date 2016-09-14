@@ -6,9 +6,8 @@ Objective: Start with a non-working gif search feed and work on fixing the sever
 
 ### Setup
 
-##### Prerequisites
 
-[Bower](http://bower.io)
+`bower install`
 
 
 ### Start the development server
