@@ -26,3 +26,7 @@ Objective: Start with a non-working gif search feed and work on fixing the sever
     - Gif-feed needs to observe for changes using an observer.
 4. At this point you are getting gifs to appear as you type. It's not efficient right now, since it searches on every keystroke. Use this.debounce to search only once user stops typing.
 5. Success!
+
+### Having trouble?
+
+Check solution branch.
